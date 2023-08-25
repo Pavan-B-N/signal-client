@@ -1,0 +1,1 @@
+> when user updates password logout on aall other logged in devices

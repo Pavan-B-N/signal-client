@@ -1,0 +1,9 @@
+.header{
+    background-color: #537FE7;
+    color: white;
+    padding: 5px;
+    height: 40px;
+}
+.header .appTitle{
+    padding-left: 20px;
+}

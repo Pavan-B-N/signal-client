@@ -1,0 +1,22 @@
+.VerifyAccount-container{
+    margin:25px auto ;
+    padding: 10px;
+    width: 400px;
+    height: calc(100vh - 120px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+@media screen and (max-width:900px) {
+    .VerifyAccount-container{
+        width: 100%;
+        max-width: 400px;
+        margin: auto ;
+        border: none;
+    }
+}
+.VerifyAccount-title{
+    color: rgb(241, 126, 84);
+    margin-bottom: 10px;
+}

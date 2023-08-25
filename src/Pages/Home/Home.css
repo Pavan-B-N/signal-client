@@ -1,0 +1,24 @@
+.home-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+.home-left-activity {
+    width: 25%;
+    min-width: 370px;
+    position: relative;
+}
+.home-right-activity{
+    width: 75%;
+}
+@media screen and (max-width:700px) {
+    .home-left-activity{
+        width: 100%;
+        min-width: none;
+    }
+    .home-right-activity {
+        display: none;
+        width: 100%;
+    }
+}
+

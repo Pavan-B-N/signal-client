@@ -1,0 +1,51 @@
+.auth-container{
+    width: 100%;
+    height: calc(100vh - 50px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.auth-template{
+    margin: 10px;
+    padding: 15px;
+    margin-right: 40px;
+}
+.auth-form-container{
+    border: 2px solid gainsboro;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    width: 500px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+@media screen and (max-width:900px) {
+    .auth-template{
+        display: none;
+    }
+    .auth-form-container{
+        border: none;
+        width: 100%;
+        max-width: 500px;
+    }
+}
+.auth-switcher-text-container{
+    display: flex;
+}
+.auth-app-title{
+    color: blue;
+}
+.app-desc{
+    color: rgb(125, 125, 125);
+}
+.CircularProgress{
+    scale: 0.7;
+}
+.ReactLink{
+    text-decoration: none;
+    font-weight: bold;
+}
+.ReactLink:hover{
+    text-decoration: underline;
+}
