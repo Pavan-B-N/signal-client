@@ -47,9 +47,14 @@ function fireMessageUpdatedEvent(chatId) {
 function getPushSubscription() {
     const promise = new Promise(async (resolve, reject) => {
         const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+        console.log('publicKey',JSON.stringify(publicKey))
+
         const sw = await navigator.serviceWorker.ready;
+        console.log('sw',JSON.stringify(sw))
+        
         try {
             const push = await sw.pushManager.subscribe({ applicationServerKey: publicKey, userVisibleOnly: true })
+            console.log('push',JSON.stringify(push))
             resolve(push)
         } catch (err) {
             console.log(err)
@@ -60,6 +65,7 @@ function getPushSubscription() {
 }
 async function subscribeToPushNotification(userId) {
     const promise = new Promise(async (resolve, reject) => {
+        managePermissions()
         const pushSubscription = await getPushSubscription();
         if (!pushSubscription) {
             localStorage.setItem("isPushNotificationRegistered", false)
@@ -99,9 +105,11 @@ function unSubscribePushNotification() {
             await client.post("/pnUnregister", data)
             resolve(true)
         } catch (err) {
-            alert("logout later unable to reach server");
-            console.log(err)
-            reject("cannot reach server");
+
+            // alert("logout later unable to reach server");
+            // console.log(err)
+            // reject("cannot reach server");
+            resolve(true)
         }
 
     });
@@ -117,7 +125,9 @@ async function Logout(setIsloggingOut) {
         console.log("clearing localStrorage")
         localStorage.clear();
         console.log("done..")
-        window.location.reload()
+        setTimeout(()=>{
+            window.location.reload()
+        },5000)
     }catch(err){
         setIsloggingOut(false)
         window.location.reload();
@@ -126,6 +136,7 @@ async function Logout(setIsloggingOut) {
 }
 function managePermissions() {
     let permission = Notification.permission;
+    console.log('permission',permission)
     if (permission === "default") {
         Notification.requestPermission()
     } else if (permission == "denied") {
@@ -184,5 +195,6 @@ export {
     Logout,
     subscribeToPushNotification,
     HandleNewMessage,
-    updateData
+    updateData,
+    managePermissions
 }

@@ -4,12 +4,12 @@ import Home from "./Pages/Home/Home"
 import Auth from "./Pages/Auth/Auth"
 import Chat from "./Pages/Chat/Chat"
 import VerifyAccount from "./Pages/VerifyAccount/VerifyAccount"
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import AppContext from "./AppContext"
 import CreateConversation from "./Pages/CreateConversation/CreateConversation"
 import { CircularProgress, Dialog, DialogTitle } from "@mui/material"
 import SetUp from "./Pages/SetUp/SetUp"
-
+import {managePermissions} from "./Handler"
 // import {deleteDatabase} from "./IndexedBDManagement"
 function LagoutDialog({ open }) {
   return (
@@ -23,6 +23,9 @@ function LagoutDialog({ open }) {
   )
 }
 function App() {
+  useEffect(()=>{
+    managePermissions()
+  },[])
   //global context
   const { isLoggedIn, isLoggingOut, isSettingUp, isSetUpDone } = useContext(AppContext)
   return (
